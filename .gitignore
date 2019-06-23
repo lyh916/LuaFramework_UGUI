@@ -1,6 +1,5 @@
-
-.vs/LuaFramework_UGUI/v16/.suo
-.vs/LuaFramework_UGUI/v16/Server/sqlite3/db.lock
-.vs/LuaFramework_UGUI/v16/Server/sqlite3/storage.ide
+.vs/
 Library/
 Temp/
+obj/
+Assets/StreamingAssets/
