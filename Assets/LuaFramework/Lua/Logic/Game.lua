@@ -49,10 +49,9 @@ function Game.OnInitOK()
 
     CtrlManager.Init();
     local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
-    if ctrl ~= nil and AppConst.ExampleMode == 1 then
-        logError(AppConst.ExampleMode)
+    -- if ctrl ~= nil and AppConst.ExampleMode == 1 then
         ctrl:Awake();
-    end
+    -- end
        
     logWarn('LuaFramework InitOK--->>>');
 end

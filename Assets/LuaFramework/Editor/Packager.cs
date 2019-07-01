@@ -74,6 +74,23 @@ public class Packager {
         if (AppConst.ExampleMode) {
             HandleExampleBundle();
         }
+
+        //打包非lua资源
+        string[] resDirs = new string[] { "Assets/LuaFramework/Texture", "Assets/LuaFramework/Prefab" };
+        string[] resPatterns = new string[] { "*.png", "*.prefab" };
+        for (int i = 0; i < resDirs.Length; i++)
+        {
+            string[] tempDirs = Directory.GetDirectories(resDirs[i], "*", SearchOption.AllDirectories);
+            for (int j = 0; j < tempDirs.Length; j++)
+            {
+                string tempDir = tempDirs[j];
+                string name = tempDir.Replace("Assets/LuaFramework/", string.Empty);
+                AddBuildMap(name + AppConst.ExtName, resPatterns[i], tempDir);
+                //UnityEngine.Debug.LogError(tempDir);
+                //UnityEngine.Debug.LogError(name);
+            }
+        }
+
         string resPath = "Assets/" + AppConst.AssetDir;
         BuildPipeline.BuildAssetBundles(resPath, maps.ToArray(), BuildAssetBundleOptions.None, target);
         BuildFileIndex();
