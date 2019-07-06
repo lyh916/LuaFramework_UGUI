@@ -22,10 +22,8 @@ namespace LuaFramework {
         /// ������壬������Դ������
         /// </summary>
         /// <param name="type"></param>
-        public void CreatePanel(string name, LuaFunction func = null) {
-            string assetName = name + "Panel";
-            string abName = "prefab/" + name.ToLower() + AppConst.ExtName;
-            if (Parent.Find(name) != null) return;
+        public void CreatePanel(string abName, string assetName, LuaFunction func = null) {
+            if (Parent.Find(assetName) != null) return;
 
 #if ASYNC_MODE
             ResManager.LoadPrefab(abName, assetName, delegate(UnityEngine.Object[] objs) {
