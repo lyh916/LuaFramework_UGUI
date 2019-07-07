@@ -49,13 +49,32 @@ function Game.OnInitOK()
 
     CtrlManager.Init();
     local ctrl = CtrlManager.GetCtrl(CtrlNames.Test);
-    ctrl:Awake();
+    -- ctrl:Awake();
     
     -- require "Test/TestLuaComponent"
     -- local go = GameObject.New("123");
     -- LuaComponent.Add(go, TestLuaComponent);
 
+    resMgr:LoadPrefab('prefab/model/test', { 'cube' }, function (objs)
+        this.cubeGo = GameObject.Instantiate(objs[0]);
+        UpdateBeat:Add(Game.Update, self);
+    end);
+
+
     logWarn('LuaFramework InitOK--->>>');
+end
+
+function Game.Update()
+    logWarn("Game.Update");
+
+    local Input = UnityEngine.Input;
+    local horizontal = Input.GetAxis("Horizontal");
+    local verticla = Input.GetAxis("Vertical");
+    local cubeTra = this.cubeGo.transform;
+    local x = cubeTra.position.x + horizontal;
+    local z = cubeTra.position.z + verticla;
+
+    cubeTra.position = Vector3.New(x, 0, z);
 end
 
 --测试协同--
