@@ -50,7 +50,11 @@ function Game.OnInitOK()
     CtrlManager.Init();
     local ctrl = CtrlManager.GetCtrl(CtrlNames.Test);
     ctrl:Awake();
-  
+    
+    -- require "Test/TestLuaComponent"
+    -- local go = GameObject.New("123");
+    -- LuaComponent.Add(go, TestLuaComponent);
+
     logWarn('LuaFramework InitOK--->>>');
 end
 
