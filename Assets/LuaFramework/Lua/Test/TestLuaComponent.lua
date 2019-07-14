@@ -1,8 +1,9 @@
 --测试LuaComponent
 
-TestLuaComponent = {
+TestLuaComponent = 
+{
+	tableName = "TestLuaComponent",
 	property1 = 100,
-	property2 = "helloWorld",
 }
 
 function TestLuaComponent:New()
@@ -12,14 +13,15 @@ function TestLuaComponent:New()
 	return o;
 end
 
-function TestLuaComponent:Awake()
-	logWarn("TestLuaComponent Awake:");
+function TestLuaComponent:Awake(go)
+	self.go = go;
+	logWarn("TestLuaComponent Awake:" .. go.name .. "_" .. self.property1);
 end
 
-function TestLuaComponent:Start()
-	logWarn("TestLuaComponent Start:");
+function TestLuaComponent:Start(go)
+	logWarn("TestLuaComponent Start:" .. go.name .. "_" .. self.property1);
 end
 
 function TestLuaComponent:Update()
-	logWarn("TestLuaComponent Update:");
+	logWarn("TestLuaComponent Update:" .. self.go.name);
 end

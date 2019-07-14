@@ -205,6 +205,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\BaseWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DelegateFactory.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaBinder.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaComponentWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_AppConstWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ByteBufferWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_GameManagerWrap.cs" />

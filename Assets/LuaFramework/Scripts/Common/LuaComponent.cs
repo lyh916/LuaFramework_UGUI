@@ -1,36 +1,51 @@
-﻿using UnityEngine;
-using System.Collections;
-using LuaInterface;
-using LuaFramework;
+﻿using LuaInterface;
+using UnityEngine;
 
 public class LuaComponent : MonoBehaviour
 {
-    public LuaTable table;
+    private LuaTable table;
+
+    private LuaFunction funcAwake;
+    private LuaFunction funcStart;
+    private LuaFunction funcUpdate;
+
+    [SerializeField]
+    private string tableName;
 
     public static LuaTable Add(GameObject go, LuaTable tableClass)
     {
-        LuaFunction fun = tableClass.GetLuaFunction("New");
-        if (fun == null)
+        LuaFunction func = tableClass.GetLuaFunction("New");
+        if (func == null)
         {
             return null;
         }
-        fun.Call(tableClass);
+        
         LuaComponent cmp = go.AddComponent<LuaComponent>();
-        cmp.table = tableClass;
+        cmp.table = func.Invoke<LuaTable, LuaTable>(tableClass);
+
+        cmp.funcAwake = tableClass.GetLuaFunction("Awake");
+        cmp.funcStart = tableClass.GetLuaFunction("Start");
+        cmp.funcUpdate = tableClass.GetLuaFunction("Update");
+
+        string name = cmp.table.GetStringField("tableName");
+        if (name != null)
+        {
+            cmp.tableName = name;
+        }
+ 
         cmp.CallAwake();
+
         return cmp.table;
     }
 
     public static LuaTable Get(GameObject go, LuaTable table)
     {
         LuaComponent[] cmps = go.GetComponents<LuaComponent>();
-        foreach (LuaComponent cmp in cmps)
+        for (int i = 0; i < cmps.Length; i++)
         {
-            string mat1 = table.ToString();
-            string mat2 = cmp.table.GetMetaTable().ToString();
-            if (mat1 == mat2)
+            if (table == cmps[i].table.GetMetaTable())
             {
-                return cmp.table;
+                return cmps[i].table;
             }
         }
         return null;
@@ -38,28 +53,25 @@ public class LuaComponent : MonoBehaviour
 
     void CallAwake()
     {
-        LuaFunction fun = table.GetLuaFunction("Awake");
-        if (fun != null)
+        if (funcAwake != null)
         {
-            fun.Call(table, gameObject);
+            funcAwake.Call(table, gameObject);
         }
     }
 
     void Start()
     {
-        LuaFunction fun = table.GetLuaFunction("Start");
-        if (fun != null)
+        if (funcStart != null)
         {
-            fun.Call(table, gameObject);
+            funcStart.Call(table, gameObject);
         }
     }
 
     void Update()
     {
-        LuaFunction fun = table.GetLuaFunction("Update");
-        if (fun != null)
+        if (funcUpdate != null)
         {
-            fun.Call(table, gameObject);
+            funcUpdate.Call(table);
         }
     }
 }
