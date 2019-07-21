@@ -51,6 +51,11 @@ function Game.OnInitOK()
     -- local ctrl = CtrlManager.GetCtrl(CtrlNames.Test);
     -- ctrl:Awake();
     
+    resMgr:Load('Prefab/Model/Test/Cube.prefab', function (objs)
+        this.cubeGo = GameObject.Instantiate(objs[0]);
+        UpdateBeat:Add(Game.Update, self);
+    end);
+
     -- resMgr:LoadPrefab('prefab/model/test', { 'cube' }, function (objs)
     --     this.cubeGo = GameObject.Instantiate(objs[0]);
     --     UpdateBeat:Add(Game.Update, self);

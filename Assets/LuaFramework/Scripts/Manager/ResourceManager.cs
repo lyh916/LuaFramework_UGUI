@@ -7,6 +7,7 @@ using System.IO;
 using LuaInterface;
 using UObject = UnityEngine.Object;
 using UnityEngine.Networking;
+using UnityEditor;
 
 public class AssetBundleInfo {
     public AssetBundle m_AssetBundle;
@@ -45,6 +46,35 @@ namespace LuaFramework {
                 }
                 if (initOK != null) initOK();
             });
+        }
+
+        public void Load(string path, LuaFunction func = null)
+        {
+            if (AppConst.DebugMode)
+            {
+#if UNITY_EDITOR
+                path = "Assets/" + path;
+                UObject asset = AssetDatabase.LoadAssetAtPath<UObject>(path);
+                if (func != null && asset != null)
+                {
+                    List<UObject> result = new List<UObject>();
+                    result.Add(asset);
+                    func.Call(result.ToArray());
+                    func.Dispose();
+                    func = null;
+                }
+#endif
+            }
+            else
+            {
+                path = path.Substring(0, path.LastIndexOf("."));
+                string assetBundleName = path.Substring(0, path.LastIndexOf("/"));
+                string assetName = path.Substring(path.LastIndexOf("/") + 1);
+                //Debug.LogWarning(assetBundleName);
+                //Debug.LogWarning(assetName);
+
+                LoadAsset<UObject>(assetBundleName, new string[] { assetName }, null, func);
+            }
         }
 
         public void LoadPrefab(string abName, string assetName, Action<UObject[]> func) {
