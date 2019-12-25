@@ -77,7 +77,7 @@ function Game.TestLuaComponent()
 end
 
 function Game.Update()
-    logWarn("Game.Update");
+    -- logWarn("Game.Update");
 
     local Input = UnityEngine.Input;
     local horizontal = Input.GetAxis("Horizontal");

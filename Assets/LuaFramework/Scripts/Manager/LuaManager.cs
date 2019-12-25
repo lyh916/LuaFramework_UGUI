@@ -129,5 +129,25 @@ namespace LuaFramework {
             lua = null;
             loader = null;
         }
+
+        LuaTable profiler = null;
+
+        public void AttachProfiler()
+        {
+            if (profiler == null)
+            {
+                profiler = lua.Require<LuaTable>("UnityEngine.Profiler");
+                profiler.Call("start", profiler);
+            }
+        }
+        public void DetachProfiler()
+        {
+            if (profiler != null)
+            {
+                profiler.Call("stop", profiler);
+                profiler.Dispose();
+                LuaProfiler.Clear();
+            }
+        }
     }
 }

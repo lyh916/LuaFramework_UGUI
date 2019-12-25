@@ -269,7 +269,9 @@ public static class CustomSettings
             return;
         }
 
-        LuaClient.Instance.AttachProfiler();
+        //LuaClient.Instance.AttachProfiler();
+        LuaManager luaManager = AppFacade.Instance.GetManager<LuaManager>(ManagerName.Lua);
+        luaManager.AttachProfiler();
     }
 
     [MenuItem("Lua/Detach Profiler", false, 152)]
@@ -280,6 +282,8 @@ public static class CustomSettings
             return;
         }
 
-        LuaClient.Instance.DetachProfiler();
+        //LuaClient.Instance.DetachProfiler();
+        LuaManager luaManager = AppFacade.Instance.GetManager<LuaManager>(ManagerName.Lua);
+        luaManager.DetachProfiler();
     }
 }
