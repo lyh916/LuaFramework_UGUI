@@ -253,7 +253,7 @@ namespace LuaFramework {
 
             //游戏对象池测试
             var prefab = Resources.Load("TestGameObjectPrefab", typeof(GameObject)) as GameObject;
-            var gameObjPool = ObjPoolManager.CreatePool("TestGameObject", 5, 10, prefab);
+            var gameObjPool = ObjPoolManager.CreatePool("TestGameObject", 5, prefab);
 
             var gameObj = Instantiate(prefab) as GameObject;
             gameObj.name = "TestGameObject_01";

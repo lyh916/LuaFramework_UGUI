@@ -12,7 +12,7 @@ namespace LuaFramework {
         private Dictionary<string, object> m_ObjectPools = new Dictionary<string, object>();
         private Dictionary<string, GameObjectPool> m_GameObjectPools = new Dictionary<string, GameObjectPool>();
 
-        Transform PoolRootObject {
+        public Transform PoolRootObject {
             get {
                 if (m_PoolRootObject == null) {
                     var objectPool = new GameObject("ObjectPool");
@@ -25,8 +25,8 @@ namespace LuaFramework {
             }
         }
 
-        public GameObjectPool CreatePool(string poolName, int initSize, int maxSize, GameObject prefab) {
-            var pool = new GameObjectPool(poolName, prefab, initSize, maxSize, PoolRootObject);
+        public GameObjectPool CreatePool(string poolName, int initSize, GameObject prefab) {
+            var pool = new GameObjectPool(poolName, prefab, initSize);
             m_GameObjectPools[poolName] = pool;
             return pool;
         }

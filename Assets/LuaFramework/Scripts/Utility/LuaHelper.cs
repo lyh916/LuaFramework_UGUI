@@ -50,6 +50,13 @@ namespace LuaFramework {
             return AppFacade.Instance.GetManager<SoundManager>(ManagerName.Sound);
         }
 
+        /// <summary>
+        /// 对象池管理器
+        /// </summary>
+        /// <returns></returns>
+        public static ObjectPoolManager GetPoolManager() {
+            return AppFacade.Instance.GetManager<ObjectPoolManager>(ManagerName.ObjectPool);
+        }
 
         /// <summary>
         /// pbc/pblua函数回调
