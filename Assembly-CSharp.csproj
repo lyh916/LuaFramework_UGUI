@@ -284,6 +284,20 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_WWWWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\ViewWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\LuaConst.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Driver\List.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Driver\LuaDLL.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Driver\LuaProfiler.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Driver\NativeHelper.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Driver\ObjectPool.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Driver\Parse\Common.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Driver\Parse\LLex.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Driver\Parse\Parse.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Driver\Parse\Util.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Driver\Sample.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\LuaHookSetup.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\NetWork\NetWorkClient.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Setting\LuaDeepProfilerAssetSetting.cs" />
+    <Compile Include="Assets\LuaProfilerClient\Core\Setting\LuaDeepProfilerSetting.cs" />
     <None Include="Assets\StreamingAssets\files.txt" />
     <None Include="Assets\link.xml" />
     <None Include="Assets\LuaFramework\ToLua\Injection\InjectionBridgeEditorInfo.xml" />
@@ -505,6 +519,12 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/software/unity2018.3.8/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="MikuBinary">
+      <HintPath>D:/software/unityProject/LuaFramework_UGUI/Assets/LuaProfilerClient/Plugins/MikuBinary.dll</HintPath>
+    </Reference>
+    <Reference Include="MikuHook">
+      <HintPath>D:/software/unityProject/LuaFramework_UGUI/Assets/LuaProfilerClient/Plugins/MikuHook.dll</HintPath>
     </Reference>
     <Reference Include="CString">
       <HintPath>D:/software/unityProject/LuaFramework_UGUI/Assets/Plugins/CString.dll</HintPath>

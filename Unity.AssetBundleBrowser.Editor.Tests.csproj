@@ -305,6 +305,15 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="Miku.Cecil">
+      <HintPath>D:/software/unityProject/LuaFramework_UGUI/Assets/LuaProfilerClient/Editor/CECIL/Miku.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="MikuBinary">
+      <HintPath>D:/software/unityProject/LuaFramework_UGUI/Assets/LuaProfilerClient/Plugins/MikuBinary.dll</HintPath>
+    </Reference>
+    <Reference Include="MikuHook">
+      <HintPath>D:/software/unityProject/LuaFramework_UGUI/Assets/LuaProfilerClient/Plugins/MikuHook.dll</HintPath>
+    </Reference>
     <Reference Include="CString">
       <HintPath>D:/software/unityProject/LuaFramework_UGUI/Assets/Plugins/CString.dll</HintPath>
     </Reference>
